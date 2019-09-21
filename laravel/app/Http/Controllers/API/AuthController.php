@@ -60,7 +60,23 @@ class AuthController extends Controller
     }
 
     /**
-     * Get the authenticated User.
+     * @OA\Post(
+     *     tags={"Auth"},
+     *     path="/auth/me",
+     *     security={{"bearerAuth":{}}},
+     *     @OA\RequestBody(
+     *          @OA\MediaType(
+     *              mediaType="application/json"
+     *          )
+     *     ),
+     *     @OA\Response(
+     *          response="401",
+     *          @OA\JsonContent(
+     *              type="object"
+     *          ),
+     *          description="Login success"
+     *     )
+     * )
      *
      * @return \Illuminate\Http\JsonResponse
      */
