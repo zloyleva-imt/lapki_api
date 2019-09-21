@@ -70,11 +70,12 @@ class AuthController extends Controller
      *          )
      *     ),
      *     @OA\Response(
+     *          response="200",
+     *          description="Get current user"
+     *     ),
+     *     @OA\Response(
      *          response="401",
-     *          @OA\JsonContent(
-     *              type="object"
-     *          ),
-     *          description="Login success"
+     *          description="Unauthorized"
      *     )
      * )
      *

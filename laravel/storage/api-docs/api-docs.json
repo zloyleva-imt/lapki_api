@@ -64,15 +64,11 @@
                     }
                 },
                 "responses": {
+                    "200": {
+                        "description": "Get current user"
+                    },
                     "401": {
-                        "description": "Login success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object"
-                                }
-                            }
-                        }
+                        "description": "Unauthorized"
                     }
                 },
                 "security": [
