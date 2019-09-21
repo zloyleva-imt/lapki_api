@@ -10,10 +10,48 @@
     },
     "servers": [
         {
-            "url": "http://localhost"
+            "url": "http://localhost/api"
         }
     ],
     "paths": {
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "operationId": "App\\Http\\Controllers\\API\\AuthController::login",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "required": [
+                                            "true"
+                                        ],
+                                        "type": "string",
+                                        "default": "test@test.com"
+                                    },
+                                    "password": {
+                                        "required": [
+                                            "true"
+                                        ],
+                                        "type": "string",
+                                        "default": "123456789"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login success"
+                    }
+                }
+            }
+        },
         "/projects": {
             "get": {
                 "tags": [

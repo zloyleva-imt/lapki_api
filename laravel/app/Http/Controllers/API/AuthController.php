@@ -18,7 +18,33 @@ class AuthController extends Controller
     }
 
     /**
-     * Get a JWT via given credentials.
+     * @OA\Post(
+     *     tags={"Auth"},
+     *     path="/auth/login",
+     *     @OA\RequestBody(
+     *          @OA\MediaType(
+     *              mediaType="application/x-www-form-urlencoded",
+     *              @OA\Schema(
+     *                  @OA\Property(
+     *                      property="email",
+     *                      type="string",
+     *                      required={"true"},
+     *                      default="test@test.com"
+     *                  ),
+     *                  @OA\Property(
+     *                      property="password",
+     *                      type="string",
+     *                      required={"true"},
+     *                      default="123456789"
+     *                  )
+     *              )
+     *          )
+     *     ),
+     *     @OA\Response(
+     *          response="200",
+     *          description="Login success"
+     *     )
+     * )
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -26,7 +52,7 @@ class AuthController extends Controller
     {
         $credentials = request(['email', 'password']);
 
-        if (! $token = auth()->attempt($credentials)) {
+        if (!$token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
