@@ -22,15 +22,16 @@ services:
       - "DOCKER_CRON=${DOCKER_CRON}"
 
   nginx:
-    image: nginx:1.16-alpine
-    depends_on:
-      - app
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - "./:/www"
-      - "./docker/nginx/conf.d:/etc/nginx/conf.d"
+      image: nginx:1.16-alpine
+      depends_on:
+        - app
+      ports:
+        - "80:80"
+        - "443:443"
+      volumes:
+        - "./:/www"
+        - "./docker/nginx/conf.d/development.conf:/etc/nginx/conf.d/default.conf"
+
 
   db:
     image: mysql/mysql-server:5.7
