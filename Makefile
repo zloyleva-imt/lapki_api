@@ -81,3 +81,10 @@ tinker: # tinker
 
 storage_link: # storage:link
 	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan storage:link
+
+
+swagger:
+	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan l5-swagger:generate
+
+clear:
+	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan cach:clear
