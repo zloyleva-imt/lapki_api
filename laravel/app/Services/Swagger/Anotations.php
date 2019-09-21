@@ -11,10 +11,21 @@
  */
 
 /**
- *  @OA\Server(
+ * @OA\Server(
  *      url=L5_SWAGGER_CONST_HOST,
  *      description="Lapki API host server"
  *  )
+ */
+
+/**
+ * @OA\SecurityScheme(
+ *      securityScheme="bearerAuth",
+ *      in="header",
+ *      name="bearerAuth",
+ *      type="http",
+ *      scheme="bearer",
+ *      bearerFormat="JWT"
+ * )
  */
 
 /**
