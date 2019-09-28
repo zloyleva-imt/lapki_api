@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\Admin;
 
+use App\Http\Resources\CitiesCollection;
 use App\Models\City;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CityController extends Controller
 {
@@ -14,7 +16,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        //
+        return CitiesCollection::collection(City::all());
     }
 
     /**

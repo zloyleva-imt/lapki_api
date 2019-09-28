@@ -230,7 +230,7 @@ return [
     ],
 
     'roles' => [
-        'managers' => ['super_admin', 'admin', 'manager',],
+        'managers' => ['super_admin', 'admin', 'editor', 'manager',],
         'users' => ['user', 'owner', 'advertiser',]
     ],
     'currency' => [
