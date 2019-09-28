@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\City;
+use App\Models\Country;
 use Illuminate\Database\Seeder;
 
 class CitiesTableSeeder extends Seeder
@@ -12,6 +13,11 @@ class CitiesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(City::class,50)->create();
+        factory(Country::class,5)->create();
+        $countries = Country::all();
+        factory(City::class,50)->create()->each(function ($city) use($countries){
+            $city->country()->associate($countries->random());
+            $city->save();
+        });
     }
 }
