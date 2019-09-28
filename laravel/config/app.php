@@ -229,4 +229,12 @@ return [
 
     ],
 
+    'roles' => [
+        'managers' => ['super_admin', 'admin', 'manager',],
+        'users' => ['user', 'owner', 'advertiser',]
+    ],
+    'currency' => [
+        'uah', 'rub', 'usd'
+    ],
+
 ];

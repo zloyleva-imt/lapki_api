@@ -19,6 +19,14 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+
+            $table->text('role');
+            $table->unsignedInteger('city_id');
+            $table->text('phone');
+            $table->unsignedInteger('rating')->default(0);
+            $table->text('currency');
+            $table->float('balance',10,2);
+
             $table->rememberToken();
             $table->timestamps();
         });

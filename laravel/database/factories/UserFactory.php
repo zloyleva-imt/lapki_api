@@ -23,5 +23,11 @@ $factory->define(User::class, function (Faker $faker) {
         'email_verified_at' => now(),
         'password' => bcrypt('123456789'),
         'remember_token' => Str::random(10),
+        'role' => $faker->randomElement($faker->randomElement(config('app.roles'))),
+        'city_id' => 1,
+        'phone' => $faker->phoneNumber,
+        'rating' => $faker->randomElement([1,2,3,4,5]),
+        'currency' => $faker->randomElement(config('app.currency')),
+        'balance' => $faker->randomFloat(2,0,99999),
     ];
 });
