@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\API\Admin;
 
-use App\Events\CreateCountryEvent;
 use App\Http\Resources\CountriesCollection;
 use App\Models\Country;
 use Illuminate\Database\QueryException;

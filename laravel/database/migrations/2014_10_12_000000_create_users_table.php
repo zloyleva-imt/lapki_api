@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
 
+            $table->boolean('delete_status')->default(false);
+
             $table->text('role');
             $table->unsignedInteger('city_id');
             $table->text('phone');

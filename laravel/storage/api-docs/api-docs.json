@@ -189,6 +189,32 @@
                 ]
             }
         },
+        "/admin/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "operationId": "App\\Http\\Controllers\\API\\Admin\\UserController::index",
+                "requestBody": {
+                    "content": {
+                        "application/json": {}
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Get current user"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/auth/login": {
             "post": {
                 "tags": [

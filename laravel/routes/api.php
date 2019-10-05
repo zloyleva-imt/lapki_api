@@ -26,7 +26,7 @@ Route::group([
     });
 
     Route::group(['namespace' => 'Admin','prefix' => 'admin',], function ($router) {
-        Route::resource('users', 'CityController');
+        Route::resource('users', 'UserController');
         Route::resource('cities', 'CityController');
         Route::resource('countries', 'CountryController');
     });
