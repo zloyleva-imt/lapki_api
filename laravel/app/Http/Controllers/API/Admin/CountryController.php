@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API\Admin;
 
+use App\Events\CreateCountryEvent;
 use App\Http\Resources\CountriesCollection;
 use App\Models\Country;
 use Illuminate\Database\QueryException;
@@ -39,7 +40,9 @@ class CountryController extends Controller
      */
     public function index()
     {
-        return CountriesCollection::collection(Country::all());
+        return response()->json([
+            'data' => CountriesCollection::collection(Country::all())
+        ]);
     }
 
 
@@ -82,7 +85,11 @@ class CountryController extends Controller
     public function store(Request $request, Country $country)
     {
         try{
-            return CountriesCollection::make($country->create($request->only('name')));
+            $country = $country->create($request->only('name'));
+
+        return response()->json([
+                'data' => CountriesCollection::make($country)
+        ]);
         }catch ( QueryException $exception){
             return response()->json(['error' => 'Country already exists']);
         }
@@ -125,8 +132,9 @@ class CountryController extends Controller
      */
     public function show(Country $country)
     {
-        //todo 404 Exception
-        return CountriesCollection::make($country);
+        return response()->json([
+            'data' => CountriesCollection::make($country)
+        ]);
     }
 
 
