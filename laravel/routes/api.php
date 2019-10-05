@@ -26,8 +26,13 @@ Route::group([
     });
 
     Route::group(['namespace' => 'Admin','prefix' => 'admin',], function ($router) {
+        Route::resource('users', 'CityController');
         Route::resource('cities', 'CityController');
         Route::resource('countries', 'CountryController');
     });
 
+});
+
+Route::fallback(function (){
+    return response()->json(['message' => 'Not found.'],404);
 });
