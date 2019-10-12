@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Country {{ $data->name }} was created</h1>
+    <h1>Country was created</h1>
 
 </body>
 </html>

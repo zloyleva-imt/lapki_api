@@ -86,5 +86,17 @@ storage_link: # storage:link
 swagger:
 	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan l5-swagger:generate
 
-clear:
-	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan cach:clear
+clear: clear_cache clear_config clear_view clear_route
+	@echo "clear"
+
+clear_cache:
+	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan cache:clear
+
+clear_config:
+	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan config:clear
+
+clear_view:
+	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan view:clear
+
+clear_route:
+	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan route:clear
