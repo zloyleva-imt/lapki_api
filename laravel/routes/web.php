@@ -13,8 +13,14 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
-Route::get('/login', 'Auth\LoginController@login');
+Route::get('/login', 'Auth\LoginController@login')->name('login');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::post('/login', 'Auth\LoginController@loginHandler')->name('loginHandler');
 Route::get('/auth/login/{token}', 'Auth\LoginController@authenticate')->name('authenticate');
+
+
+Route::get('/user', function () {
+    return 'You are login';
+})->middleware('auth')->name('user');
