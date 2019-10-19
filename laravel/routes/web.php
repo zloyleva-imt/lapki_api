@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('/login', 'Auth\LoginController@login');
+Route::post('/login', 'Auth\LoginController@loginHandler')->name('loginHandler');
