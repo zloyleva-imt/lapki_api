@@ -8,6 +8,7 @@ use App\Models\LoginToken;
 use App\Models\User;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AuthenticateUser
 {
@@ -15,6 +16,8 @@ class AuthenticateUser
     use ValidatesRequests;
 
     private $request;
+    private $user;
+    private $token;
 
     public function __construct(Request $request)
     {
@@ -28,7 +31,7 @@ class AuthenticateUser
         // create token
             ->createToken()
         // send to user
-//            ->send()
+            ->send()
         ;
     }
 
@@ -43,11 +46,22 @@ class AuthenticateUser
     private function createToken()
     {
         // find user
-        $user = User::byEmail($this->request->email);
+        $this->user = User::byEmail($this->request->email);
         // generate token
-//        $user->generateToken();
-        $token = LoginToken::generateToken($user);
-dd($token);
+        $this->token = LoginToken::generateToken($this->user);
+
         return $this;
+    }
+
+    private function send()
+    {
+        $url = route('authenticate', ['token' => $this->token]);
+        Mail::raw(
+            $url,
+            function ($message){
+                $message->to($this->user->email)
+                    ->subject('Login to site');
+            }
+        );
     }
 }
