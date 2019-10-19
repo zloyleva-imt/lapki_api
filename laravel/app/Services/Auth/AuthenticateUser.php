@@ -4,6 +4,8 @@
 namespace App\Services\Auth;
 
 
+use App\Models\LoginToken;
+use App\Models\User;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 
@@ -24,7 +26,7 @@ class AuthenticateUser
         // validate request
         $this->requestValidate()
         // create token
-//            ->createToken()
+            ->createToken()
         // send to user
 //            ->send()
         ;
@@ -35,6 +37,17 @@ class AuthenticateUser
         $this->validate($this->request, [
             'email' => 'required|email|exists:users'
         ]);
+        return $this;
+    }
+
+    private function createToken()
+    {
+        // find user
+        $user = User::byEmail($this->request->email);
+        // generate token
+//        $user->generateToken();
+        $token = LoginToken::generateToken($user);
+dd($token);
         return $this;
     }
 }
