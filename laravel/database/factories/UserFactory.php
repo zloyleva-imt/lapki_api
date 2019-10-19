@@ -20,5 +20,8 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
+        'role' => $faker->randomElement($faker->randomElement(config('app.roles'))),
+        'currency' => $faker->randomElement(config('app.currency')),
+        'balance' => $faker->randomFloat(2,0,99999),
     ];
 });
