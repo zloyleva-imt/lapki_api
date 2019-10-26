@@ -235,5 +235,8 @@ return [
     'currency' => [
         'uah', 'rub', 'usd'
     ],
+    'adds_status' => [
+        'published', 'canceled'
+    ]
 
 ];

@@ -22,4 +22,8 @@ class User extends Authenticatable
     static function byEmail(string $email){
         return static::where('email', $email)->firstOrFail();
     }
+
+    public function isOwnAds(Ad $ad){
+        return $this->id === $ad->user_id;
+    }
 }

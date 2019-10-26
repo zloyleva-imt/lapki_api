@@ -24,3 +24,5 @@ Route::get('/auth/login/{token}', 'Auth\LoginController@authenticate')->name('au
 Route::get('/user', function () {
     return 'You are login';
 })->middleware('auth')->name('user');
+
+Route::resource('ads', 'AdController');
