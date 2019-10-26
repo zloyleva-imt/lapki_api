@@ -10,6 +10,7 @@ class AdController extends Controller
     public function __construct()
     {
 //        $this->middleware('auth', ['except' => ['index','show']]);
+        $this->authorizeResource(Ad::class, 'ad');
     }
 
     /**
@@ -19,7 +20,8 @@ class AdController extends Controller
      */
     public function index()
     {
-        //
+//        $this->authorize('viewAny', Ad::class);
+        return 'Index';
     }
 
     /**
@@ -29,7 +31,8 @@ class AdController extends Controller
      */
     public function create()
     {
-        //
+//        $this->authorize('create', 'App\Models\Ad');
+        return 'create';
     }
 
     /**
@@ -51,6 +54,7 @@ class AdController extends Controller
      */
     public function show(Ad $ad)
     {
+        $this->authorize('view', $ad);
         return 'adfasd';
     }
 
@@ -63,8 +67,13 @@ class AdController extends Controller
     public function edit(Ad $ad)
     {
 //        abort_if( auth()->guest() || $ad->user_id !== auth()->user()->id,403);
-        abort_if( auth()->guest() || !auth()->user()->isOwnAds($ad),403);
+//        abort_if( auth()->guest() || !auth()->user()->isOwnAds($ad),403);
 
+//        $this->authorize('view', $ad);
+
+//        if(auth()->user()->can('view', $ad)){
+//            abort(403);
+//        }
         return view('ads.edit', [
             'ad' => $ad
         ]);

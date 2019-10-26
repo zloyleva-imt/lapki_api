@@ -26,3 +26,5 @@ Route::get('/user', function () {
 })->middleware('auth')->name('user');
 
 Route::resource('ads', 'AdController');
+
+Route::get('ads/{id}/aaaa', 'AdController@edit')->middleware('can:view,ad');

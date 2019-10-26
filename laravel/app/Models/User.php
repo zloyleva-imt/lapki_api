@@ -26,4 +26,8 @@ class User extends Authenticatable
     public function isOwnAds(Ad $ad){
         return $this->id === $ad->user_id;
     }
+
+    public function isSuperAdmin(){
+        return $this->role == 'super_admin';
+    }
 }
