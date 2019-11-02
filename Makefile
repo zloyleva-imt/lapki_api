@@ -47,7 +47,7 @@ node_modules: # npm install
 	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel node npm install
 
 watch: # npm run watch
-	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel node npm run watch
+	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel node npm run watch-poll
 
 routes: # routes list
 	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan route:list

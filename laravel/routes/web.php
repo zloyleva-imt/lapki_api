@@ -27,9 +27,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('testmsg', function (){
-    event(new \App\Events\TestMessage(new Msg('new text ' . Str::random(40))));
+Route::get('/api/tasks', function (){
+    return \App\Models\Task::pluck('body');
 });
+
+Route::post('/api/tasks', function (){
+    $task = \App\Models\Task::forceCreate(request(['body']));
+    event(new \App\Events\TaskCreatedEvent($task));
+});
+
+//Route::get('testmsg', function (){
+//    event(new \App\Events\TestMessage(new Msg('new text ' . Str::random(40))));
+//});
 
 Auth::routes();
 
