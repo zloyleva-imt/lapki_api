@@ -11,8 +11,24 @@
 |
 */
 
+use Illuminate\Support\Str;
+
+class Msg
+{
+    public $text;
+
+    public function __construct($text)
+    {
+        $this->text = $text;
+    }
+}
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('testmsg', function (){
+    event(new \App\Events\TestMessage(new Msg('new text ' . Str::random(40))));
 });
 
 Auth::routes();
