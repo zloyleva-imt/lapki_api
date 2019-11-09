@@ -12,5 +12,8 @@
 */
 
 Route::get('/', function () {
+
+    (new \App\Services\ParseXMLToModel('App\Models\Notary', 'list.xml', 'public'))->parseAndSave();
+//dd($foo->parseAndSave());
     return view('welcome');
 });
